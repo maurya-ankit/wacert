@@ -4,11 +4,13 @@ import mimetypes
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-count=0;
+from .models import Count
 
 # Create your views here.
 class home(View):
     def get(self,request):
+        obj=Count.object.filter(name="visits")[0]
+        count=obj.count
         context={'count':count}
         return render(request,'index.html',context)
     def post(self,request):
@@ -25,8 +27,11 @@ class home(View):
 
         response = HttpResponse(content_type ="image/png")
         img.save(response, "PNG")
-        global count
-        count+=1
+        obj=Count.object.filter(name="visits")[0]
+        n=obj.count
+        n=n+1
+        obj.count=n
+        obj.save()
         return response
 
         
