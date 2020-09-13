@@ -9,7 +9,7 @@ from .models import Count
 # Create your views here.
 class home(View):
     def get(self,request):
-        obj=Count.object.filter(name="visits")[0]
+        obj=Count.objects.filter(name="visits")[0]
         count=obj.count
         context={'count':count}
         return render(request,'index.html',context)
@@ -27,7 +27,7 @@ class home(View):
 
         response = HttpResponse(content_type ="image/png")
         img.save(response, "PNG")
-        obj=Count.object.filter(name="visits")[0]
+        obj=Count.objects.filter(name="visits")[0]
         n=obj.count
         n=n+1
         obj.count=n
