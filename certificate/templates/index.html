@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+          Get Your Whatsapp University Certificate from here
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Just Enter your name and press on submit Button</h5>
+          <form class="form-inline" method="POST">
+            {%csrf_token%}
+            <div class="form-group mb-2">
+              <label for="staticEmail2" class="sr-only">lable</label>
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Enter your Name">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="inputPassword2" class="sr-only">Name</label>
+              <input type="text" class="form-control" name="name" id="inputPassword2" placeholder="Your Name">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">submit</button>
+          </form>
+          <p class="card-text">Share the link with your friends <a href="https://wa.me/?text=get%20your%20whatsapp%20university%20certificate%20from%20here%20{{ request.build_absolute_uri }}%20%F0%9F%99%82%F0%9F%A4%AB">Send to your friend</a></p>
+
+        </div>
+      </div>
+
+</div>
+{%endblock%}
